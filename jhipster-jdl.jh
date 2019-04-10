@@ -1,0 +1,4 @@
+entity Demo {
+	regionName String,
+    regionTime String
+}
