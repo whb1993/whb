@@ -1,0 +1,95 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vueUser">
+            <h2><span jhiTranslate="whbApp.vueUser.detail.title">Vue User</span> {{vueUser.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="whbApp.vueUser.name">Name</span></dt>
+                <dd>
+                    <span>{{vueUser.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.password">Password</span></dt>
+                <dd>
+                    <span>{{vueUser.password}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.cname">Cname</span></dt>
+                <dd>
+                    <span>{{vueUser.cname}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.userPic">User Pic</span></dt>
+                <dd>
+                    <span>{{vueUser.userPic}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.address">Address</span></dt>
+                <dd>
+                    <span>{{vueUser.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.age">Age</span></dt>
+                <dd>
+                    <span>{{vueUser.age}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.mobile">Mobile</span></dt>
+                <dd>
+                    <span>{{vueUser.mobile}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.email">Email</span></dt>
+                <dd>
+                    <span>{{vueUser.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.status">Status</span></dt>
+                <dd>
+                    <span>{{vueUser.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.creatTime">Creat Time</span></dt>
+                <dd>
+                    <span>{{vueUser.creatTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.loginNum">Login Num</span></dt>
+                <dd>
+                    <span>{{vueUser.loginNum}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.errNmu">Err Nmu</span></dt>
+                <dd>
+                    <span>{{vueUser.errNmu}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.deptId">Dept Id</span></dt>
+                <dd>
+                    <span>{{vueUser.deptId}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.creator">Creator</span></dt>
+                <dd>
+                    <span>{{vueUser.creator}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.lockTime">Lock Time</span></dt>
+                <dd>
+                    <span>{{vueUser.lockTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.lockReason">Lock Reason</span></dt>
+                <dd>
+                    <span>{{vueUser.lockReason}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.description">Description</span></dt>
+                <dd>
+                    <span>{{vueUser.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.vueUser.reserve">Reserve</span></dt>
+                <dd>
+                    <span>{{vueUser.reserve}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vue-user', vueUser.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

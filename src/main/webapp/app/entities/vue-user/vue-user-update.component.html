@@ -1,0 +1,146 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-vue-user-heading" jhiTranslate="whbApp.vueUser.home.createOrEditLabel">Create or edit a Vue User</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!vueUser.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="vueUser.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="vueUser.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.password" for="field_password">Password</label>
+                    <input type="text" class="form-control" name="password" id="field_password"
+                        [(ngModel)]="vueUser.password" required/>
+                    <div [hidden]="!(editForm.controls.password?.dirty && editForm.controls.password?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.password?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.cname" for="field_cname">Cname</label>
+                    <input type="text" class="form-control" name="cname" id="field_cname"
+                        [(ngModel)]="vueUser.cname" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.userPic" for="field_userPic">User Pic</label>
+                    <input type="text" class="form-control" name="userPic" id="field_userPic"
+                        [(ngModel)]="vueUser.userPic" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.address" for="field_address">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                        [(ngModel)]="vueUser.address" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.age" for="field_age">Age</label>
+                    <input type="number" class="form-control" name="age" id="field_age"
+                        [(ngModel)]="vueUser.age" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.mobile" for="field_mobile">Mobile</label>
+                    <input type="number" class="form-control" name="mobile" id="field_mobile"
+                        [(ngModel)]="vueUser.mobile" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="vueUser.email" required pattern="^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$"/>
+                    <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.email?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.email?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Email' }">
+                            This field should follow pattern for "Email".
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.status" for="field_status">Status</label>
+                    <input type="text" class="form-control" name="status" id="field_status"
+                        [(ngModel)]="vueUser.status" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.creatTime" for="field_creatTime">Creat Time</label>
+                    <div class="input-group">
+                        <input id="field_creatTime" type="text" class="form-control" name="creatTime" ngbDatepicker  #creatTimeDp="ngbDatepicker" [(ngModel)]="vueUser.creatTime"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="creatTimeDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.loginNum" for="field_loginNum">Login Num</label>
+                    <input type="number" class="form-control" name="loginNum" id="field_loginNum"
+                        [(ngModel)]="vueUser.loginNum" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.errNmu" for="field_errNmu">Err Nmu</label>
+                    <input type="number" class="form-control" name="errNmu" id="field_errNmu"
+                        [(ngModel)]="vueUser.errNmu" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.deptId" for="field_deptId">Dept Id</label>
+                    <input type="number" class="form-control" name="deptId" id="field_deptId"
+                        [(ngModel)]="vueUser.deptId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.creator" for="field_creator">Creator</label>
+                    <input type="text" class="form-control" name="creator" id="field_creator"
+                        [(ngModel)]="vueUser.creator" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.lockTime" for="field_lockTime">Lock Time</label>
+                    <div class="input-group">
+                        <input id="field_lockTime" type="text" class="form-control" name="lockTime" ngbDatepicker  #lockTimeDp="ngbDatepicker" [(ngModel)]="vueUser.lockTime"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lockTimeDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.lockReason" for="field_lockReason">Lock Reason</label>
+                    <input type="text" class="form-control" name="lockReason" id="field_lockReason"
+                        [(ngModel)]="vueUser.lockReason" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="vueUser.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.reserve" for="field_reserve">Reserve</label>
+                    <input type="text" class="form-control" name="reserve" id="field_reserve"
+                        [(ngModel)]="vueUser.reserve" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+{
+    "whbApp": {
+        "vueUser": {
+            "home": {
+                "title": "Vue Users",
+                "createLabel": "Create a new Vue User",
+                "createOrEditLabel": "Create or edit a Vue User"
+            },
+            "created": "A new Vue User is created with identifier {{ param }}",
+            "updated": "A Vue User is updated with identifier {{ param }}",
+            "deleted": "A Vue User is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Vue User {{ id }}?"
+            },
+            "detail": {
+                "title": "Vue User"
+            },
+            "name": "Name",
+            "password": "Password",
+            "cname": "Cname",
+            "userPic": "User Pic",
+            "address": "Address",
+            "age": "Age",
+            "mobile": "Mobile",
+            "email": "Email",
+            "status": "Status",
+            "creatTime": "Creat Time",
+            "loginNum": "Login Num",
+            "errNmu": "Err Nmu",
+            "deptId": "Dept Id",
+            "creator": "Creator",
+            "lockTime": "Lock Time",
+            "lockReason": "Lock Reason",
+            "description": "Description",
+            "reserve": "Reserve"
+        }
+    }
+}
