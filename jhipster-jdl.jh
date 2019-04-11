@@ -1,4 +1,20 @@
-entity Demo {
-	regionName String,
-    regionTime String
+entity VueUser {
+  name String required,
+  password String required,
+  cname String,
+  userPic String,
+  address String,
+  age Integer,
+  mobile Integer,
+  email String required pattern(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/),
+  status String,
+  creatTime LocalDate,
+  loginNum Integer,
+  errNmu Integer,
+  deptId Integer,
+  creator String,
+  lockTime LocalDate,
+  lockReason String,
+  description String,
+  reserve String,
 }

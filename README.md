@@ -1,27 +1,26 @@
 # whb
 
-This application was generated using JHipster 5.8.2, you can find documentation and help at
-[https://www.jhipster.tech/documentation-archive/v5.8.2](https://www.jhipster.tech/documentation-archive/v5.8.2).
+此应用程序是使用 JHipster 5.8.2 生成的，您可以在[https://www.jhipster.tech/documentation-archive/v5.8.2](https://www.jhipster.tech/documentation-archive/v5.8.2)找到文档和帮助 。
+.
 
-## Development
+## 发展
 
-Before you can build this project, you must install and configure the following dependencies on your machine:
+在构建此项目之前，必须在计算机上安装和配置以下依赖项：
 
-1.  [Node.js][]: We use Node to run a development web server and build the project.
-    Depending on your system, you can install Node either from source or as a pre-packaged bundle.
+1.  [Node.js][]: 我们使用 Node 来运行开发 Web 服务器并构建项目。根据您的系统，您可以从源或预先打包的捆绑包安装 Node。
 
-After installing Node, you should be able to run the following command to install development tools.
-You will only need to run this command when dependencies change in [package.json](package.json).
+安装 Node 后，您应该能够运行以下命令来安装开发工具。只有在 [package.json](package.json)中依赖项发生更改时，才需要运行此命令。
 
-    npm install
+    npm install yarn
+    yarn config set registry 'https://registry.npm.taobao.org'
+    yarn install
 
-We use npm scripts and [Webpack][] as our build system.
+我们使用 yarn 脚本和 Webpack 作为构建系统,为保证国内下载速度，切换为阿里源。
 
-Run the following commands in two separate terminals to create a blissful development experience where your browser
-auto-refreshes when files change on your hard drive.
+在两个单独的终端中运行以下命令，分别启动前后端项目，当您的硬盘驱动器上的文件发生更改时，浏览器会自动刷新。
 
     ./mvnw
-    npm start
+    yarn start
 
 Npm is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
 specifying a newer version in [package.json](package.json). You can also run `npm update` and `npm install` to manage dependencies.

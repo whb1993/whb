@@ -27,9 +27,9 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/whb?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+        url: jdbc:mysql://45.76.64.192:43306/vue2019?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
         username: root
-        password:
+        password: whbroot
         hikari:
             poolName: Hikari
             auto-commit: false
@@ -52,10 +52,10 @@ spring:
     liquibase:
         contexts: prod
     mail:
-        host: localhost
+        host: smtp.163.com
         port: 25
-        username:
-        password:
+        username: 15120002516@163.com
+        password: 123qwe
     thymeleaf:
         cache: true
 
@@ -113,8 +113,8 @@ jhipster:
                 token-validity-in-seconds: 86400
                 token-validity-in-seconds-for-remember-me: 2592000
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: whb@localhost
-        base-url: http://my-server-url-to-change # Modify according to your server's URL
+        from: 15120002516@163.com
+        base-url: http://nicework.work
     metrics:
         logs: # Reports metrics in the logs
             enabled: false
