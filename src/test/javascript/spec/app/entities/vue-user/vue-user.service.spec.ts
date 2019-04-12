@@ -5,7 +5,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { VueUserService } from 'app/entities/vue-user/vue-user.service';
 import { IVueUser, VueUser } from 'app/shared/model/vue-user.model';
 
@@ -37,6 +37,7 @@ describe('Service Tests', () => {
                 'AAAAAAA',
                 'AAAAAAA',
                 currentDate,
+                currentDate,
                 0,
                 0,
                 0,
@@ -52,8 +53,9 @@ describe('Service Tests', () => {
             it('should find an element', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        creatTime: currentDate.format(DATE_FORMAT),
-                        lockTime: currentDate.format(DATE_FORMAT)
+                        creatTime: currentDate.format(DATE_TIME_FORMAT),
+                        updataTime: currentDate.format(DATE_TIME_FORMAT),
+                        lockTime: currentDate.format(DATE_TIME_FORMAT)
                     },
                     elemDefault
                 );
@@ -70,14 +72,16 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         id: 0,
-                        creatTime: currentDate.format(DATE_FORMAT),
-                        lockTime: currentDate.format(DATE_FORMAT)
+                        creatTime: currentDate.format(DATE_TIME_FORMAT),
+                        updataTime: currentDate.format(DATE_TIME_FORMAT),
+                        lockTime: currentDate.format(DATE_TIME_FORMAT)
                     },
                     elemDefault
                 );
                 const expected = Object.assign(
                     {
                         creatTime: currentDate,
+                        updataTime: currentDate,
                         lockTime: currentDate
                     },
                     returnedFromService
@@ -102,12 +106,13 @@ describe('Service Tests', () => {
                         mobile: 'BBBBBB',
                         email: 'BBBBBB',
                         status: 'BBBBBB',
-                        creatTime: currentDate.format(DATE_FORMAT),
+                        creatTime: currentDate.format(DATE_TIME_FORMAT),
+                        updataTime: currentDate.format(DATE_TIME_FORMAT),
                         loginNum: 1,
                         errNmu: 1,
                         deptId: 1,
                         creator: 'BBBBBB',
-                        lockTime: currentDate.format(DATE_FORMAT),
+                        lockTime: currentDate.format(DATE_TIME_FORMAT),
                         lockReason: 'BBBBBB',
                         description: 'BBBBBB',
                         reserve: 'BBBBBB'
@@ -118,6 +123,7 @@ describe('Service Tests', () => {
                 const expected = Object.assign(
                     {
                         creatTime: currentDate,
+                        updataTime: currentDate,
                         lockTime: currentDate
                     },
                     returnedFromService
@@ -142,12 +148,13 @@ describe('Service Tests', () => {
                         mobile: 'BBBBBB',
                         email: 'BBBBBB',
                         status: 'BBBBBB',
-                        creatTime: currentDate.format(DATE_FORMAT),
+                        creatTime: currentDate.format(DATE_TIME_FORMAT),
+                        updataTime: currentDate.format(DATE_TIME_FORMAT),
                         loginNum: 1,
                         errNmu: 1,
                         deptId: 1,
                         creator: 'BBBBBB',
-                        lockTime: currentDate.format(DATE_FORMAT),
+                        lockTime: currentDate.format(DATE_TIME_FORMAT),
                         lockReason: 'BBBBBB',
                         description: 'BBBBBB',
                         reserve: 'BBBBBB'
@@ -157,6 +164,7 @@ describe('Service Tests', () => {
                 const expected = Object.assign(
                     {
                         creatTime: currentDate,
+                        updataTime: currentDate,
                         lockTime: currentDate
                     },
                     returnedFromService

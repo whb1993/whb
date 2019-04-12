@@ -25,6 +25,7 @@
             <th><span jhiTranslate="whbApp.vueUser.email">Email</span></th>
             <th><span jhiTranslate="whbApp.vueUser.status">Status</span></th>
             <th><span jhiTranslate="whbApp.vueUser.creatTime">Creat Time</span></th>
+            <th><span jhiTranslate="whbApp.vueUser.updataTime">Updata Time</span></th>
             <th><span jhiTranslate="whbApp.vueUser.loginNum">Login Num</span></th>
             <th><span jhiTranslate="whbApp.vueUser.errNmu">Err Nmu</span></th>
             <th><span jhiTranslate="whbApp.vueUser.deptId">Dept Id</span></th>
@@ -48,12 +49,13 @@
                 <td>{{vueUser.mobile}}</td>
                 <td>{{vueUser.email}}</td>
                 <td>{{vueUser.status}}</td>
-                <td>{{vueUser.creatTime | date:'mediumDate'}}</td>
+                <td>{{vueUser.creatTime | date:'medium'}}</td>
+                <td>{{vueUser.updataTime | date:'medium'}}</td>
                 <td>{{vueUser.loginNum}}</td>
                 <td>{{vueUser.errNmu}}</td>
                 <td>{{vueUser.deptId}}</td>
                 <td>{{vueUser.creator}}</td>
-                <td>{{vueUser.lockTime | date:'mediumDate'}}</td>
+                <td>{{vueUser.lockTime | date:'medium'}}</td>
                 <td>{{vueUser.lockReason}}</td>
                 <td>{{vueUser.description}}</td>
                 <td>{{vueUser.reserve}}</td>

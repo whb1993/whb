@@ -38,7 +38,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="address" type="varchar(255)">
+            <column name="address" type="varchar(100)">
                 <constraints nullable="true" />
             </column>
 
@@ -46,8 +46,8 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="mobile" type="varchar(255)">
-                <constraints nullable="true" />
+            <column name="mobile" type="varchar(20)">
+                <constraints nullable="false" />
             </column>
 
             <column name="email" type="varchar(255)">
@@ -58,7 +58,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="creat_time" type="date">
+            <column name="creat_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="updata_time" type="datetime">
                 <constraints nullable="true" />
             </column>
 
@@ -78,7 +82,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="lock_time" type="date">
+            <column name="lock_time" type="datetime">
                 <constraints nullable="true" />
             </column>
 
@@ -96,6 +100,9 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="vue_user" columnName="creat_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="vue_user" columnName="updata_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="vue_user" columnName="lock_time" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

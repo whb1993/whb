@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 
@@ -57,8 +57,8 @@ public class VueUserResourceIntTest {
     private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_AGE = 1;
-    private static final Integer UPDATED_AGE = 2;
+    private static final Integer DEFAULT_AGE = 200;
+    private static final Integer UPDATED_AGE = 201;
 
     private static final String DEFAULT_MOBILE = "AAAAAAAAAA";
     private static final String UPDATED_MOBILE = "BBBBBBBBBB";
@@ -69,8 +69,11 @@ public class VueUserResourceIntTest {
     private static final String DEFAULT_STATUS = "AAAAAAAAAA";
     private static final String UPDATED_STATUS = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_CREAT_TIME = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREAT_TIME = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_CREAT_TIME = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREAT_TIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_UPDATA_TIME = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_UPDATA_TIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final Integer DEFAULT_LOGIN_NUM = 1;
     private static final Integer UPDATED_LOGIN_NUM = 2;
@@ -84,8 +87,8 @@ public class VueUserResourceIntTest {
     private static final String DEFAULT_CREATOR = "AAAAAAAAAA";
     private static final String UPDATED_CREATOR = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_LOCK_TIME = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_LOCK_TIME = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_LOCK_TIME = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_LOCK_TIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final String DEFAULT_LOCK_REASON = "AAAAAAAAAA";
     private static final String UPDATED_LOCK_REASON = "BBBBBBBBBB";
@@ -148,6 +151,7 @@ public class VueUserResourceIntTest {
             .email(DEFAULT_EMAIL)
             .status(DEFAULT_STATUS)
             .creatTime(DEFAULT_CREAT_TIME)
+            .updataTime(DEFAULT_UPDATA_TIME)
             .loginNum(DEFAULT_LOGIN_NUM)
             .errNmu(DEFAULT_ERR_NMU)
             .deptId(DEFAULT_DEPT_ID)
@@ -189,6 +193,7 @@ public class VueUserResourceIntTest {
         assertThat(testVueUser.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testVueUser.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testVueUser.getCreatTime()).isEqualTo(DEFAULT_CREAT_TIME);
+        assertThat(testVueUser.getUpdataTime()).isEqualTo(DEFAULT_UPDATA_TIME);
         assertThat(testVueUser.getLoginNum()).isEqualTo(DEFAULT_LOGIN_NUM);
         assertThat(testVueUser.getErrNmu()).isEqualTo(DEFAULT_ERR_NMU);
         assertThat(testVueUser.getDeptId()).isEqualTo(DEFAULT_DEPT_ID);
@@ -256,6 +261,24 @@ public class VueUserResourceIntTest {
 
     @Test
     @Transactional
+    public void checkMobileIsRequired() throws Exception {
+        int databaseSizeBeforeTest = vueUserRepository.findAll().size();
+        // set the field null
+        vueUser.setMobile(null);
+
+        // Create the VueUser, which fails.
+
+        restVueUserMockMvc.perform(post("/api/vue-users")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(vueUser)))
+            .andExpect(status().isBadRequest());
+
+        List<VueUser> vueUserList = vueUserRepository.findAll();
+        assertThat(vueUserList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void checkEmailIsRequired() throws Exception {
         int databaseSizeBeforeTest = vueUserRepository.findAll().size();
         // set the field null
@@ -293,6 +316,7 @@ public class VueUserResourceIntTest {
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].creatTime").value(hasItem(DEFAULT_CREAT_TIME.toString())))
+            .andExpect(jsonPath("$.[*].updataTime").value(hasItem(DEFAULT_UPDATA_TIME.toString())))
             .andExpect(jsonPath("$.[*].loginNum").value(hasItem(DEFAULT_LOGIN_NUM)))
             .andExpect(jsonPath("$.[*].errNmu").value(hasItem(DEFAULT_ERR_NMU)))
             .andExpect(jsonPath("$.[*].deptId").value(hasItem(DEFAULT_DEPT_ID)))
@@ -324,6 +348,7 @@ public class VueUserResourceIntTest {
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.creatTime").value(DEFAULT_CREAT_TIME.toString()))
+            .andExpect(jsonPath("$.updataTime").value(DEFAULT_UPDATA_TIME.toString()))
             .andExpect(jsonPath("$.loginNum").value(DEFAULT_LOGIN_NUM))
             .andExpect(jsonPath("$.errNmu").value(DEFAULT_ERR_NMU))
             .andExpect(jsonPath("$.deptId").value(DEFAULT_DEPT_ID))
@@ -365,6 +390,7 @@ public class VueUserResourceIntTest {
             .email(UPDATED_EMAIL)
             .status(UPDATED_STATUS)
             .creatTime(UPDATED_CREAT_TIME)
+            .updataTime(UPDATED_UPDATA_TIME)
             .loginNum(UPDATED_LOGIN_NUM)
             .errNmu(UPDATED_ERR_NMU)
             .deptId(UPDATED_DEPT_ID)
@@ -393,6 +419,7 @@ public class VueUserResourceIntTest {
         assertThat(testVueUser.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testVueUser.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testVueUser.getCreatTime()).isEqualTo(UPDATED_CREAT_TIME);
+        assertThat(testVueUser.getUpdataTime()).isEqualTo(UPDATED_UPDATA_TIME);
         assertThat(testVueUser.getLoginNum()).isEqualTo(UPDATED_LOGIN_NUM);
         assertThat(testVueUser.getErrNmu()).isEqualTo(UPDATED_ERR_NMU);
         assertThat(testVueUser.getDeptId()).isEqualTo(UPDATED_DEPT_ID);

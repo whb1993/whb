@@ -12,6 +12,7 @@ export interface IVueUser {
     email?: string;
     status?: string;
     creatTime?: Moment;
+    updataTime?: Moment;
     loginNum?: number;
     errNmu?: number;
     deptId?: number;
@@ -35,6 +36,7 @@ export class VueUser implements IVueUser {
         public email?: string,
         public status?: string,
         public creatTime?: Moment,
+        public updataTime?: Moment,
         public loginNum?: number,
         public errNmu?: number,
         public deptId?: number,

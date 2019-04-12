@@ -44,17 +44,43 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="whbApp.vueUser.address" for="field_address">Address</label>
                     <input type="text" class="form-control" name="address" id="field_address"
-                        [(ngModel)]="vueUser.address" />
+                        [(ngModel)]="vueUser.address" maxlength="100"/>
+                    <div [hidden]="!(editForm.controls.address?.dirty && editForm.controls.address?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.address?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="whbApp.vueUser.age" for="field_age">Age</label>
                     <input type="number" class="form-control" name="age" id="field_age"
-                        [(ngModel)]="vueUser.age" />
+                        [(ngModel)]="vueUser.age" min="200" jhiMin="200"/>
+                    <div [hidden]="!(editForm.controls.age?.dirty && editForm.controls.age?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.age?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 200 }">
+                            This field should be at least 200.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.age?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="whbApp.vueUser.mobile" for="field_mobile">Mobile</label>
                     <input type="text" class="form-control" name="mobile" id="field_mobile"
-                        [(ngModel)]="vueUser.mobile" />
+                        [(ngModel)]="vueUser.mobile" required maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.mobile?.dirty && editForm.controls.mobile?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mobile?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mobile?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="whbApp.vueUser.email" for="field_email">Email</label>
@@ -78,12 +104,16 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="whbApp.vueUser.creatTime" for="field_creatTime">Creat Time</label>
-                    <div class="input-group">
-                        <input id="field_creatTime" type="text" class="form-control" name="creatTime" ngbDatepicker  #creatTimeDp="ngbDatepicker" [(ngModel)]="vueUser.creatTime"
+                    <div class="d-flex">
+                        <input id="field_creatTime" type="datetime-local" class="form-control" name="creatTime" [(ngModel)]="creatTime" placeholder="YYYY-MM-DD HH:mm"
                         />
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="creatTimeDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
-                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="whbApp.vueUser.updataTime" for="field_updataTime">Updata Time</label>
+                    <div class="d-flex">
+                        <input id="field_updataTime" type="datetime-local" class="form-control" name="updataTime" [(ngModel)]="updataTime" placeholder="YYYY-MM-DD HH:mm"
+                        />
                     </div>
                 </div>
                 <div class="form-group">
@@ -108,12 +138,9 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="whbApp.vueUser.lockTime" for="field_lockTime">Lock Time</label>
-                    <div class="input-group">
-                        <input id="field_lockTime" type="text" class="form-control" name="lockTime" ngbDatepicker  #lockTimeDp="ngbDatepicker" [(ngModel)]="vueUser.lockTime"
+                    <div class="d-flex">
+                        <input id="field_lockTime" type="datetime-local" class="form-control" name="lockTime" [(ngModel)]="lockTime" placeholder="YYYY-MM-DD HH:mm"
                         />
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="lockTimeDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
-                        </span>
                     </div>
                 </div>
                 <div class="form-group">

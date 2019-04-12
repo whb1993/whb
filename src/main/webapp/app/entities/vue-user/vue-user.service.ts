@@ -51,8 +51,9 @@ export class VueUserService {
 
     protected convertDateFromClient(vueUser: IVueUser): IVueUser {
         const copy: IVueUser = Object.assign({}, vueUser, {
-            creatTime: vueUser.creatTime != null && vueUser.creatTime.isValid() ? vueUser.creatTime.format(DATE_FORMAT) : null,
-            lockTime: vueUser.lockTime != null && vueUser.lockTime.isValid() ? vueUser.lockTime.format(DATE_FORMAT) : null
+            creatTime: vueUser.creatTime != null && vueUser.creatTime.isValid() ? vueUser.creatTime.toJSON() : null,
+            updataTime: vueUser.updataTime != null && vueUser.updataTime.isValid() ? vueUser.updataTime.toJSON() : null,
+            lockTime: vueUser.lockTime != null && vueUser.lockTime.isValid() ? vueUser.lockTime.toJSON() : null
         });
         return copy;
     }
@@ -60,6 +61,7 @@ export class VueUserService {
     protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
         if (res.body) {
             res.body.creatTime = res.body.creatTime != null ? moment(res.body.creatTime) : null;
+            res.body.updataTime = res.body.updataTime != null ? moment(res.body.updataTime) : null;
             res.body.lockTime = res.body.lockTime != null ? moment(res.body.lockTime) : null;
         }
         return res;
@@ -69,6 +71,7 @@ export class VueUserService {
         if (res.body) {
             res.body.forEach((vueUser: IVueUser) => {
                 vueUser.creatTime = vueUser.creatTime != null ? moment(vueUser.creatTime) : null;
+                vueUser.updataTime = vueUser.updataTime != null ? moment(vueUser.updataTime) : null;
                 vueUser.lockTime = vueUser.lockTime != null ? moment(vueUser.lockTime) : null;
             });
         }

@@ -25,15 +25,28 @@
         },
         {
             "fieldName": "address",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
         },
         {
             "fieldName": "age",
-            "fieldType": "Integer"
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 200
         },
         {
             "fieldName": "mobile",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
         },
         {
             "fieldName": "email",
@@ -50,7 +63,11 @@
         },
         {
             "fieldName": "creatTime",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updataTime",
+            "fieldType": "Instant"
         },
         {
             "fieldName": "loginNum",
@@ -70,7 +87,7 @@
         },
         {
             "fieldName": "lockTime",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "lockReason",

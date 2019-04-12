@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -37,8 +38,10 @@ public class VueUserResource {
     public VueUserResource(VueUserRepository vueUserRepository) {
         this.vueUserRepository = vueUserRepository;
     }
+
     /**
      * 放开注册请求url  vue
+     *
      * @param vueUser
      * @return
      * @throws URISyntaxException
@@ -50,25 +53,34 @@ public class VueUserResource {
             throw new BadRequestAlertException("A new vueUser cannot already have an ID", ENTITY_NAME, "idexists");
         }
         checkUser(vueUser);
+        vueUser.setCreator("resign");
+        vueUser.setCreatTime(Instant.now());
         VueUser result = vueUserRepository.save(vueUser);
         return ResponseEntity.created(new URI("/api/vue-users/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
+
     private void checkUser(VueUser vueUser) {
         //  修改
         if (vueUser.getId() != null) {
             //校验用户名是否重复
             vueUserRepository.findOneByName(vueUser.getName().toLowerCase()).ifPresent(existingUser -> {
-                throw new BadRequestAlertException(ErrorConstants.DEFAULT_TYPE, "Name is already in use!", "vmsUserManagement", "vmsUser.name.exists");
+                if (!vueUser.getId().equals(existingUser.getId())) {
+                    throw new BadRequestAlertException(ErrorConstants.DEFAULT_TYPE, "Name is already in use!", "vmsUserManagement", "vmsUser.name.exists");
+                }
             });
             //校验手机号是否重复
             vueUserRepository.findOneByMobile(vueUser.getMobile()).ifPresent(existingUser -> {
-                throw new BadRequestAlertException(ErrorConstants.DEFAULT_TYPE, "Mobile is already in use!", "vmsUserManagement", "vmsUser.mobile.exists");
+                if (!vueUser.getId().equals(existingUser.getId())) {
+                    throw new BadRequestAlertException(ErrorConstants.DEFAULT_TYPE, "Mobile is already in use!", "vmsUserManagement", "vmsUser.mobile.exists");
+                }
             });
             //校验邮箱是否重复
             vueUserRepository.findOneByEmailIgnoreCase(vueUser.getEmail()).ifPresent(existingUser -> {
-                throw new BadRequestAlertException(ErrorConstants.DEFAULT_TYPE, "Email is already in use!", "vmsUserManagement", "vmsUser.email.exists");
+                if (!vueUser.getId().equals(existingUser.getId())) {
+                    throw new BadRequestAlertException(ErrorConstants.DEFAULT_TYPE, "Email is already in use!", "vmsUserManagement", "vmsUser.email.exists");
+                }
             });
         } else {
             //校验用户名是否重复
@@ -86,6 +98,7 @@ public class VueUserResource {
         }
 
     }
+
     /**
      * POST  /vue-users : Create a new vueUser.
      *
@@ -100,6 +113,7 @@ public class VueUserResource {
             throw new BadRequestAlertException("A new vueUser cannot already have an ID", ENTITY_NAME, "idexists");
         }
         checkUser(vueUser);
+        vueUser.setCreatTime(Instant.now());
         VueUser result = vueUserRepository.save(vueUser);
         return ResponseEntity.created(new URI("/api/vue-users/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -122,6 +136,7 @@ public class VueUserResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         checkUser(vueUser);
+        vueUser.setCreatTime(Instant.now());
         VueUser result = vueUserRepository.save(vueUser);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, vueUser.getId().toString()))

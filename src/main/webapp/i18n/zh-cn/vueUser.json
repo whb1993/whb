@@ -25,6 +25,7 @@
             "email": "Email",
             "status": "Status",
             "creatTime": "Creat Time",
+            "updataTime": "Updata Time",
             "loginNum": "Login Num",
             "errNmu": "Err Nmu",
             "deptId": "Dept Id",

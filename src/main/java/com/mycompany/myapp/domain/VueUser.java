@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.Objects;
 
 /**
@@ -39,13 +39,17 @@ public class VueUser implements Serializable {
     @Column(name = "user_pic")
     private String userPic;
 
-    @Column(name = "address")
+    @Size(max = 100)
+    @Column(name = "address", length = 100)
     private String address;
 
+    @Min(value = 200)
     @Column(name = "age")
     private Integer age;
 
-    @Column(name = "mobile")
+    @NotNull
+    @Size(max = 20)
+    @Column(name = "mobile", length = 20, nullable = false)
     private String mobile;
 
     @NotNull
@@ -57,7 +61,10 @@ public class VueUser implements Serializable {
     private String status;
 
     @Column(name = "creat_time")
-    private LocalDate creatTime;
+    private Instant creatTime;
+
+    @Column(name = "updata_time")
+    private Instant updataTime;
 
     @Column(name = "login_num")
     private Integer loginNum;
@@ -72,7 +79,7 @@ public class VueUser implements Serializable {
     private String creator;
 
     @Column(name = "lock_time")
-    private LocalDate lockTime;
+    private Instant lockTime;
 
     @Column(name = "lock_reason")
     private String lockReason;
@@ -209,17 +216,30 @@ public class VueUser implements Serializable {
         this.status = status;
     }
 
-    public LocalDate getCreatTime() {
+    public Instant getCreatTime() {
         return creatTime;
     }
 
-    public VueUser creatTime(LocalDate creatTime) {
+    public VueUser creatTime(Instant creatTime) {
         this.creatTime = creatTime;
         return this;
     }
 
-    public void setCreatTime(LocalDate creatTime) {
+    public void setCreatTime(Instant creatTime) {
         this.creatTime = creatTime;
+    }
+
+    public Instant getUpdataTime() {
+        return updataTime;
+    }
+
+    public VueUser updataTime(Instant updataTime) {
+        this.updataTime = updataTime;
+        return this;
+    }
+
+    public void setUpdataTime(Instant updataTime) {
+        this.updataTime = updataTime;
     }
 
     public Integer getLoginNum() {
@@ -274,16 +294,16 @@ public class VueUser implements Serializable {
         this.creator = creator;
     }
 
-    public LocalDate getLockTime() {
+    public Instant getLockTime() {
         return lockTime;
     }
 
-    public VueUser lockTime(LocalDate lockTime) {
+    public VueUser lockTime(Instant lockTime) {
         this.lockTime = lockTime;
         return this;
     }
 
-    public void setLockTime(LocalDate lockTime) {
+    public void setLockTime(Instant lockTime) {
         this.lockTime = lockTime;
     }
 
@@ -361,6 +381,7 @@ public class VueUser implements Serializable {
             ", email='" + getEmail() + "'" +
             ", status='" + getStatus() + "'" +
             ", creatTime='" + getCreatTime() + "'" +
+            ", updataTime='" + getUpdataTime() + "'" +
             ", loginNum=" + getLoginNum() +
             ", errNmu=" + getErrNmu() +
             ", deptId=" + getDeptId() +
