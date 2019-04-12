@@ -8,7 +8,7 @@ export interface IVueUser {
     userPic?: string;
     address?: string;
     age?: number;
-    mobile?: number;
+    mobile?: string;
     email?: string;
     status?: string;
     creatTime?: Moment;
@@ -31,7 +31,7 @@ export class VueUser implements IVueUser {
         public userPic?: string,
         public address?: string,
         public age?: number,
-        public mobile?: number,
+        public mobile?: string,
         public email?: string,
         public status?: string,
         public creatTime?: Moment,

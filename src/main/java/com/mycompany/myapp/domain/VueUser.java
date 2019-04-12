@@ -46,7 +46,7 @@ public class VueUser implements Serializable {
     private Integer age;
 
     @Column(name = "mobile")
-    private Integer mobile;
+    private String mobile;
 
     @NotNull
     @Pattern(regexp = "^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9]{2,6}$")
@@ -170,16 +170,16 @@ public class VueUser implements Serializable {
         this.age = age;
     }
 
-    public Integer getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
-    public VueUser mobile(Integer mobile) {
+    public VueUser mobile(String mobile) {
         this.mobile = mobile;
         return this;
     }
 
-    public void setMobile(Integer mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 
@@ -357,7 +357,7 @@ public class VueUser implements Serializable {
             ", userPic='" + getUserPic() + "'" +
             ", address='" + getAddress() + "'" +
             ", age=" + getAge() +
-            ", mobile=" + getMobile() +
+            ", mobile='" + getMobile() + "'" +
             ", email='" + getEmail() + "'" +
             ", status='" + getStatus() + "'" +
             ", creatTime='" + getCreatTime() + "'" +

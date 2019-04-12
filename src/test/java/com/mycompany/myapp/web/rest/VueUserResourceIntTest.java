@@ -60,8 +60,8 @@ public class VueUserResourceIntTest {
     private static final Integer DEFAULT_AGE = 1;
     private static final Integer UPDATED_AGE = 2;
 
-    private static final Integer DEFAULT_MOBILE = 1;
-    private static final Integer UPDATED_MOBILE = 2;
+    private static final String DEFAULT_MOBILE = "AAAAAAAAAA";
+    private static final String UPDATED_MOBILE = "BBBBBBBBBB";
 
     private static final String DEFAULT_EMAIL = "WU@-x.D5.Uw";
     private static final String UPDATED_EMAIL = "IU@u.VL.H9bO";
@@ -289,7 +289,7 @@ public class VueUserResourceIntTest {
             .andExpect(jsonPath("$.[*].userPic").value(hasItem(DEFAULT_USER_PIC.toString())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].age").value(hasItem(DEFAULT_AGE)))
-            .andExpect(jsonPath("$.[*].mobile").value(hasItem(DEFAULT_MOBILE)))
+            .andExpect(jsonPath("$.[*].mobile").value(hasItem(DEFAULT_MOBILE.toString())))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].creatTime").value(hasItem(DEFAULT_CREAT_TIME.toString())))
@@ -320,7 +320,7 @@ public class VueUserResourceIntTest {
             .andExpect(jsonPath("$.userPic").value(DEFAULT_USER_PIC.toString()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
             .andExpect(jsonPath("$.age").value(DEFAULT_AGE))
-            .andExpect(jsonPath("$.mobile").value(DEFAULT_MOBILE))
+            .andExpect(jsonPath("$.mobile").value(DEFAULT_MOBILE.toString()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.creatTime").value(DEFAULT_CREAT_TIME.toString()))

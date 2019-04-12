@@ -58,7 +58,7 @@ public class VueUserResource {
      * @return
      * @throws URISyntaxException
      */
-    @PostMapping("/vueRegister")
+    @PostMapping("/user/register")
     public ResponseEntity<VueUser> registerVueUser(@Valid @RequestBody VueUser vueUser) throws URISyntaxException {
         log.debug("REST request to save VueUser : {}", vueUser);
         if (vueUser.getId() != null) {

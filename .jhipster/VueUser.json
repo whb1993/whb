@@ -33,7 +33,7 @@
         },
         {
             "fieldName": "mobile",
-            "fieldType": "Integer"
+            "fieldType": "String"
         },
         {
             "fieldName": "email",

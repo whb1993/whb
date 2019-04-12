@@ -46,7 +46,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="mobile" type="integer">
+            <column name="mobile" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
