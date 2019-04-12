@@ -53,6 +53,24 @@ public class VueUserResource {
     }
 
     /**
+     * 放开注册请求url  vue
+     * @param vueUser
+     * @return
+     * @throws URISyntaxException
+     */
+    @PostMapping("/vueRegister")
+    public ResponseEntity<VueUser> registerVueUser(@Valid @RequestBody VueUser vueUser) throws URISyntaxException {
+        log.debug("REST request to save VueUser : {}", vueUser);
+        if (vueUser.getId() != null) {
+            throw new BadRequestAlertException("A new vueUser cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        VueUser result = vueUserRepository.save(vueUser);
+        return ResponseEntity.created(new URI("/api/vue-users/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
+    /**
      * PUT  /vue-users : Updates an existing vueUser.
      *
      * @param vueUser the vueUser to update
