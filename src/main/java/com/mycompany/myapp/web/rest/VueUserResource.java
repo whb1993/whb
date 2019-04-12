@@ -2,6 +2,9 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.domain.VueUser;
 import com.mycompany.myapp.repository.VueUserRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
+import com.mycompany.myapp.web.rest.errors.EmailAlreadyUsedException;
+import com.mycompany.myapp.web.rest.errors.ErrorConstants;
+import com.mycompany.myapp.web.rest.errors.LoginAlreadyUsedException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -46,6 +49,19 @@ public class VueUserResource {
         if (vueUser.getId() != null) {
             throw new BadRequestAlertException("A new vueUser cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        //校验用户名是否重复
+        vueUserRepository.findOneByName(vueUser.getName().toLowerCase()).ifPresent(existingUser -> {
+            throw new BadRequestAlertException(ErrorConstants.DEFAULT_TYPE, "Name is already in use!", "vmsUserManagement", "vmsUser.name.exists");
+        });
+        //校验手机号是否重复
+        vueUserRepository.findOneByMobile(vueUser.getMobile()).ifPresent(existingUser -> {
+            throw new BadRequestAlertException(ErrorConstants.DEFAULT_TYPE, "Mobile is already in use!", "vmsUserManagement", "vmsUser.mobile.exists");
+        });
+        //校验邮箱是否重复
+        vueUserRepository.findOneByEmailIgnoreCase(vueUser.getEmail()).ifPresent(existingUser -> {
+            throw new BadRequestAlertException(ErrorConstants.DEFAULT_TYPE, "Email is already in use!", "vmsUserManagement", "vmsUser.email.exists");
+        });
+
         VueUser result = vueUserRepository.save(vueUser);
         return ResponseEntity.created(new URI("/api/vue-users/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
