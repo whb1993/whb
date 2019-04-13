@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
-
-import { LoginModalService, AccountService, Account } from 'app/core';
+import { ActivatedRoute } from '@angular/router';
+import { BestUser, IBestUser } from 'app/shared/model/best-user.model';
+import { Observable } from 'rxjs/index';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { BestUserService } from 'app/entities/best-user/best-user.service';
 
 @Component({
     selector: 'jhi-home',
@@ -10,35 +11,36 @@ import { LoginModalService, AccountService, Account } from 'app/core';
     styleUrls: ['home.css']
 })
 export class HomeComponent implements OnInit {
-    account: Account;
-    modalRef: NgbModalRef;
+    bestUser = new BestUser();
+    isSaving: boolean;
 
-    constructor(
-        private accountService: AccountService,
-        private loginModalService: LoginModalService,
-        private eventManager: JhiEventManager
-    ) {}
+    showBestUser = true;
+    constructor(protected bestUserService: BestUserService, protected activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
-        this.accountService.identity().then((account: Account) => {
-            this.account = account;
-        });
-        this.registerAuthenticationSuccess();
+        this.isSaving = false;
     }
 
-    registerAuthenticationSuccess() {
-        this.eventManager.subscribe('authenticationSuccess', message => {
-            this.accountService.identity().then(account => {
-                this.account = account;
-            });
-        });
+    previousState() {
+        this.bestUser = new BestUser();
     }
 
-    isAuthenticated() {
-        return this.accountService.isAuthenticated();
+    save() {
+        this.isSaving = true;
+        this.subscribeToSaveResponse(this.bestUserService.create(this.bestUser));
     }
 
-    login() {
-        this.modalRef = this.loginModalService.open();
+    protected subscribeToSaveResponse(result: Observable<HttpResponse<IBestUser>>) {
+        result.subscribe((res: HttpResponse<IBestUser>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    }
+
+    protected onSaveSuccess() {
+        this.isSaving = false;
+        this.showBestUser = false;
+        // this.previousState();
+    }
+
+    protected onSaveError() {
+        this.isSaving = false;
     }
 }

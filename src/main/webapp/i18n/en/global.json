@@ -9,6 +9,7 @@
                 "main": "Entities",
                 "demo": "Demo",
                 "vueUser": "Vue User",
+                "bestUser": "Best User",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -110,15 +111,15 @@
             "title": "Confirm delete operation"
         },
         "validation": {
-            "required": "This field is required.",
+            "required": "这个字段为必填项",
             "minlength": "This field is required to be at least {{ min }} characters.",
             "maxlength": "This field cannot be longer than {{ max }} characters.",
-            "min": "This field should be at least {{ min }}.",
-            "max": "This field cannot be more than {{ max }}.",
+            "min": "该字段必须大于 {{ min }}.",
+            "max": "该字段必须小于 {{ max }}.",
             "minbytes": "This field should be at least {{ min }} bytes.",
             "maxbytes": "This field cannot be more than {{ max }} bytes.",
             "pattern": "This field should follow pattern for {{ pattern }}.",
-            "number": "This field should be a number.",
+            "number": "该字段必须为数字",
             "datetimelocal": "This field should be a date and time.",
             "patternLogin": "This field can only contain letters, digits and e-mail addresses."
         }

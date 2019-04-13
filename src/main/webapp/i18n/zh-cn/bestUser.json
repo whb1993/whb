@@ -1,0 +1,41 @@
+{
+    "whbApp": {
+        "bestUser": {
+            "home": {
+                "title": "Best Users",
+                "createLabel": "创建新 Best User",
+                "createOrEditLabel": "创建或编辑 Best User"
+            },
+            "created": "Best User {{ param }} 创建成功",
+            "updated": "Best User {{ param }} 更新成功",
+            "deleted": "Best User {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Best User {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Best User"
+            },
+            "userName": "User Name",
+            "value1": "Value 1",
+            "value2": "Value 2",
+            "value3": "Value 3",
+            "value4": "Value 4",
+            "value5": "Value 5",
+            "value6": "Value 6",
+            "value7": "Value 7",
+            "value8": "Value 8",
+            "value9": "Value 9",
+            "value10": "Value 10",
+            "value11": "Value 11",
+            "value12": "Value 12",
+            "yuanyin": "Yuanyin",
+            "des1": "Des 1",
+            "des2": "Des 2",
+            "des3": "Des 3",
+            "des4": "Des 4",
+            "des5": "Des 5",
+            "des6": "Des 6",
+            "des7": "Des 7"
+        }
+    }
+}

@@ -9,6 +9,7 @@
                 "main": "数据",
                 "demo": "Demo",
                 "vueUser": "Vue User",
+                "bestUser": "Best User",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

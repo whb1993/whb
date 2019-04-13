@@ -1,0 +1,107 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bestUser">
+            <h2><span jhiTranslate="whbApp.bestUser.detail.title">Best User</span> {{bestUser.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="whbApp.bestUser.userName">User Name</span></dt>
+                <dd>
+                    <span>{{bestUser.userName}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value1">Value 1</span></dt>
+                <dd>
+                    <span>{{bestUser.value1}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value2">Value 2</span></dt>
+                <dd>
+                    <span>{{bestUser.value2}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value3">Value 3</span></dt>
+                <dd>
+                    <span>{{bestUser.value3}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value4">Value 4</span></dt>
+                <dd>
+                    <span>{{bestUser.value4}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value5">Value 5</span></dt>
+                <dd>
+                    <span>{{bestUser.value5}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value6">Value 6</span></dt>
+                <dd>
+                    <span>{{bestUser.value6}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value7">Value 7</span></dt>
+                <dd>
+                    <span>{{bestUser.value7}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value8">Value 8</span></dt>
+                <dd>
+                    <span>{{bestUser.value8}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value9">Value 9</span></dt>
+                <dd>
+                    <span>{{bestUser.value9}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value10">Value 10</span></dt>
+                <dd>
+                    <span>{{bestUser.value10}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value11">Value 11</span></dt>
+                <dd>
+                    <span>{{bestUser.value11}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.value12">Value 12</span></dt>
+                <dd>
+                    <span>{{bestUser.value12}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.yuanyin">Yuanyin</span></dt>
+                <dd>
+                    <span>{{bestUser.yuanyin}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.des1">Des 1</span></dt>
+                <dd>
+                    <span>{{bestUser.des1}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.des2">Des 2</span></dt>
+                <dd>
+                    <span>{{bestUser.des2}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.des3">Des 3</span></dt>
+                <dd>
+                    <span>{{bestUser.des3}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.des4">Des 4</span></dt>
+                <dd>
+                    <span>{{bestUser.des4}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.des5">Des 5</span></dt>
+                <dd>
+                    <span>{{bestUser.des5}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.des6">Des 6</span></dt>
+                <dd>
+                    <span>{{bestUser.des6}}</span>
+                </dd>
+                <dt><span jhiTranslate="whbApp.bestUser.des7">Des 7</span></dt>
+                <dd>
+                    <span>{{bestUser.des7}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/best-user', bestUser.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

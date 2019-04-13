@@ -53,8 +53,8 @@ public class VueUserResource {
             throw new BadRequestAlertException("A new vueUser cannot already have an ID", ENTITY_NAME, "idexists");
         }
         checkUser(vueUser);
-        vueUser.setCreator("resign");
-        vueUser.setCreatTime(Instant.now());
+//        vueUser.setCreator("resign");
+//        vueUser.setCreatTime(Instant.now());
         VueUser result = vueUserRepository.save(vueUser);
         return ResponseEntity.created(new URI("/api/vue-users/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -113,7 +113,7 @@ public class VueUserResource {
             throw new BadRequestAlertException("A new vueUser cannot already have an ID", ENTITY_NAME, "idexists");
         }
         checkUser(vueUser);
-        vueUser.setCreatTime(Instant.now());
+//        vueUser.setCreatTime(Instant.now());
         VueUser result = vueUserRepository.save(vueUser);
         return ResponseEntity.created(new URI("/api/vue-users/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -136,7 +136,7 @@ public class VueUserResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         checkUser(vueUser);
-        vueUser.setCreatTime(Instant.now());
+//        vueUser.setCreatTime(Instant.now());
         VueUser result = vueUserRepository.save(vueUser);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, vueUser.getId().toString()))

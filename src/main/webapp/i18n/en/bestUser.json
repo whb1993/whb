@@ -1,0 +1,41 @@
+{
+    "whbApp": {
+        "bestUser": {
+            "home": {
+                "title": "Best Users",
+                "createLabel": "最佳实践奖",
+                "createOrEditLabel": "最佳实践奖"
+            },
+            "created": "最佳实践奖提交成功",
+            "updated": "A Best User is updated with identifier {{ param }}",
+            "deleted": "A Best User is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Best User {{ id }}?"
+            },
+            "detail": {
+                "title": "Best User"
+            },
+            "userName": "他/她的名字",
+            "value1": "你认为在工作能力方面他/她能拿几分（5分）",
+            "value2": "你认为在工作态度方面他/她能拿几分（5分）",
+            "value3": "你认为在团队贡献方面他/她能拿几分（5分）",
+            "value4": "你认为在沟通能力方面他/她能拿几分（5分）",
+            "value5": "Value 5",
+            "value6": "Value 6",
+            "value7": "Value 7",
+            "value8": "Value 8",
+            "value9": "Value 9",
+            "value10": "Value 10",
+            "value11": "Value 11",
+            "value12": "Value 12",
+            "yuanyin": "你选择他/她的原因是",
+            "des1": "Des 1",
+            "des2": "Des 2",
+            "des3": "Des 3",
+            "des4": "Des 4",
+            "des5": "Des 5",
+            "des6": "Des 6",
+            "des7": "Des 7"
+        }
+    }
+}

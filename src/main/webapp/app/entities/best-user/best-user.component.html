@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="whbApp.bestUser.home.title">Best Users</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-best-user" [routerLink]="['/best-user/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="whbApp.bestUser.home.createLabel">
+            Create new Best User
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="bestUsers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.userName">User Name</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value1">Value 1</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value2">Value 2</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value3">Value 3</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value4">Value 4</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value5">Value 5</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value6">Value 6</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value7">Value 7</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value8">Value 8</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value9">Value 9</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value10">Value 10</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value11">Value 11</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.value12">Value 12</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.yuanyin">Yuanyin</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.des1">Des 1</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.des2">Des 2</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.des3">Des 3</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.des4">Des 4</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.des5">Des 5</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.des6">Des 6</span></th>
+            <th><span jhiTranslate="whbApp.bestUser.des7">Des 7</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bestUser of bestUsers ;trackBy: trackId">
+                <td><a [routerLink]="['/best-user', bestUser.id, 'view' ]">{{bestUser.id}}</a></td>
+                <td>{{bestUser.userName}}</td>
+                <td>{{bestUser.value1}}</td>
+                <td>{{bestUser.value2}}</td>
+                <td>{{bestUser.value3}}</td>
+                <td>{{bestUser.value4}}</td>
+                <td>{{bestUser.value5}}</td>
+                <td>{{bestUser.value6}}</td>
+                <td>{{bestUser.value7}}</td>
+                <td>{{bestUser.value8}}</td>
+                <td>{{bestUser.value9}}</td>
+                <td>{{bestUser.value10}}</td>
+                <td>{{bestUser.value11}}</td>
+                <td>{{bestUser.value12}}</td>
+                <td>{{bestUser.yuanyin}}</td>
+                <td>{{bestUser.des1}}</td>
+                <td>{{bestUser.des2}}</td>
+                <td>{{bestUser.des3}}</td>
+                <td>{{bestUser.des4}}</td>
+                <td>{{bestUser.des5}}</td>
+                <td>{{bestUser.des6}}</td>
+                <td>{{bestUser.des7}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/best-user', bestUser.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/best-user', bestUser.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'best-user', { outlets: { popup: bestUser.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

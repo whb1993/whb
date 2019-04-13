@@ -19,6 +19,10 @@ import { RouterModule } from '@angular/router';
             {
                 path: 'vue-user',
                 loadChildren: './vue-user/vue-user.module#WhbVueUserModule'
+            },
+            {
+                path: 'best-user',
+                loadChildren: './best-user/best-user.module#WhbBestUserModule'
             }
             /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
         ])
