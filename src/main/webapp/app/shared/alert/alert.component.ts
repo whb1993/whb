@@ -5,7 +5,16 @@ import { JhiAlertService } from 'ng-jhipster';
     selector: 'jhi-alert',
     template: `
         <div class="alerts" role="alert">
-            <div *ngFor="let alert of alerts" [ngClass]="setClasses(alert)">
+            <div
+                style="
+            position: fixed; top: 30px;
+            right: 0px;
+            left: 0px;
+            width: 100px;
+            z-index: 1040;"
+                *ngFor="let alert of alerts"
+                [ngClass]="setClasses(alert)"
+            >
                 <ngb-alert *ngIf="alert && alert.type && alert.msg" [type]="alert.type" (close)="alert.close(alerts)">
                     <pre [innerHTML]="alert.msg"></pre>
                 </ngb-alert>

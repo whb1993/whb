@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BestUser, IBestUser } from 'app/shared/model/best-user.model';
 import { Observable } from 'rxjs/index';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { BestUserService } from 'app/entities/best-user/best-user.service';
+import { JhiAlertService } from 'ng-jhipster';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'jhi-home',
@@ -11,11 +13,18 @@ import { BestUserService } from 'app/entities/best-user/best-user.service';
     styleUrls: ['home.css']
 })
 export class HomeComponent implements OnInit {
+    // @ViewChild
+    @ViewChild('editForm')
+    editForm: NgForm;
     bestUser = new BestUser();
     isSaving: boolean;
 
     showBestUser = true;
-    constructor(protected bestUserService: BestUserService, protected activatedRoute: ActivatedRoute) {}
+    constructor(
+        protected bestUserService: BestUserService,
+        protected jhiAlertService: JhiAlertService,
+        protected activatedRoute: ActivatedRoute
+    ) {}
 
     ngOnInit() {
         this.isSaving = false;
@@ -23,6 +32,7 @@ export class HomeComponent implements OnInit {
 
     previousState() {
         this.bestUser = new BestUser();
+        this.editForm.onReset();
     }
 
     save() {
@@ -36,8 +46,9 @@ export class HomeComponent implements OnInit {
 
     protected onSaveSuccess() {
         this.isSaving = false;
-        this.showBestUser = false;
-        // this.previousState();
+        // this.showBestUser = false;
+        this.jhiAlertService.success('添加成功');
+        this.previousState();
     }
 
     protected onSaveError() {
