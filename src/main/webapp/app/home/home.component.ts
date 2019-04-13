@@ -4,7 +4,7 @@ import { BestUser, IBestUser } from 'app/shared/model/best-user.model';
 import { Observable } from 'rxjs/index';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { BestUserService } from 'app/entities/best-user/best-user.service';
-import { JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -23,11 +23,13 @@ export class HomeComponent implements OnInit {
     constructor(
         protected bestUserService: BestUserService,
         protected jhiAlertService: JhiAlertService,
+        private languageService: JhiLanguageService,
         protected activatedRoute: ActivatedRoute
     ) {}
 
     ngOnInit() {
         this.isSaving = false;
+        this.languageService.changeLanguage('en');
     }
 
     previousState() {
