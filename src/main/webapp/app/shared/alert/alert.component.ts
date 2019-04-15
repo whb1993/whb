@@ -7,11 +7,9 @@ import { JhiAlertService } from 'ng-jhipster';
         <div class="alerts" role="alert">
             <div
                 style="
-            position: fixed; top: 30px;
-            right: 0px;
-            left: 0px;
-            width: 100px;
-            z-index: 1040;"
+            position: fixed!important;
+            top: 30px;
+            right: 40%;"
                 *ngFor="let alert of alerts"
                 [ngClass]="setClasses(alert)"
             >

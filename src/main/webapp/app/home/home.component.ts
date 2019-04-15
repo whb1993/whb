@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     }
 
     previousState() {
-        this.bestUser = new BestUser();
+        // this.bestUser = new BestUser();
         this.editForm.onReset();
     }
 
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     protected onSaveSuccess() {
         this.isSaving = false;
         // this.showBestUser = false;
-        this.jhiAlertService.success('添加成功');
+        this.jhiAlertService.success('global.success');
         this.previousState();
     }
 

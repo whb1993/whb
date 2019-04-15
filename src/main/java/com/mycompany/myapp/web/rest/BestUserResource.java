@@ -48,7 +48,6 @@ public class BestUserResource {
         }
         BestUser result = bestUserRepository.save(bestUser);
         return ResponseEntity.created(new URI("/api/best-users/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
