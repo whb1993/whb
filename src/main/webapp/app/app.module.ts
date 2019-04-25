@@ -20,6 +20,7 @@ import { WhbEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { ActiveMenuDirective, ErrorComponent, FooterComponent, JhiMainComponent, NavbarComponent, PageRibbonComponent } from './layouts';
+import { PagesModule } from 'app/pages/pages.module';
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { ActiveMenuDirective, ErrorComponent, FooterComponent, JhiMainComponent,
         WhbAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         WhbEntityModule,
+        PagesModule,
         WhbAppRoutingModule
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
