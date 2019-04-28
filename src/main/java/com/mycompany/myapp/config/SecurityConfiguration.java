@@ -92,7 +92,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authenticationEntryPoint(problemSupport)
             .accessDeniedHandler(problemSupport)
         .and()
-            .headers()
+//        X-Content-Type-Options: nosniff 关闭响应头部  取消corb拦截  方便接口调用
+            .headers().contentTypeOptions().disable()
             .frameOptions()
             .disable()
         .and()
