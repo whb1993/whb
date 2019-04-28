@@ -1,0 +1,10 @@
+
+<input nz-input placeholder="参数" [(ngModel)]="zMes" />
+<button nz-button nzType="primary" (click)="sendMes()">发送请求</button>
+<nz-card  nzTitle="展示"  [nzExtra]="extraTemplate">
+    <p *ngFor="let item of mesArr">{{item}}</p>
+</nz-card>
+<ng-template #extraTemplate>
+    <a (click)="clear()">clear</a>
+</ng-template>
+<!--<div #myTerminal></div>-->

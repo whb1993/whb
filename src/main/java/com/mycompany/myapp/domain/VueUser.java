@@ -20,7 +20,7 @@ import java.util.Objects;
 public class VueUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,7 +43,7 @@ public class VueUser implements Serializable {
     @Column(name = "address", length = 100)
     private String address;
 
-    @Min(value = 200)
+    @Max(value = 200)
     @Column(name = "age")
     private Integer age;
 
