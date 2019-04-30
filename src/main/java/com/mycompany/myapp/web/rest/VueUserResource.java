@@ -136,7 +136,7 @@ public class VueUserResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         checkUser(vueUser);
-        vueUser.setCreatTime(Instant.now());
+        vueUser.setUpdataTime(Instant.now());
         VueUser result = vueUserRepository.save(vueUser);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, vueUser.getId().toString()))
