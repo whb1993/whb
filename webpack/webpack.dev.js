@@ -30,7 +30,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             target: `http${options.tls ? 's' : ''}://127.0.0.1:8080`,
             secure: false,
             changeOrigin: options.tls,
-            headers: { host: 'localhost:9000' }
+            headers: { host: 'localhost:4200' }
         },{
             context: [
                 '/websocket'
@@ -109,7 +109,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         new ForkTsCheckerWebpackPlugin(),
         new BrowserSyncPlugin({
             host: 'localhost',
-            port: 9000,
+            port: 4200,
             proxy: {
                 target: 'http://localhost:9060',
                 ws: true
